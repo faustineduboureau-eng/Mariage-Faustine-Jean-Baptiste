@@ -6,7 +6,7 @@
 <title>Faustine &amp; Jean-Baptiste — 31 juillet &amp; 1er août 2027</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Work+Sans:wght@400;500;600&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Work+Sans:wght@400;500;600&family=Caveat:wght@500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
   :root {
     --linen: #FAF7F1;
@@ -75,12 +75,12 @@
     margin: 0;
     background: var(--linen);
     color: var(--onbg);
-    font-family: 'Work Sans', -apple-system, sans-serif;
+    font-family: 'Playfair Display', Georgia, serif;
     padding-top: env(safe-area-inset-top, 0px);
     padding-bottom: env(safe-area-inset-bottom, 0px);
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3, .display { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; letter-spacing: -0.005em; color: var(--clay); text-shadow: 0 0 1px rgba(251,247,236,0.55), 0 1px 2px rgba(0,0,0,0.12); }
+  h1, h2, h3, .display { font-family: 'Pinyon Script', cursive; font-weight: 400; letter-spacing: 0.01em; color: var(--clay); text-shadow: 0 0 1px rgba(251,247,236,0.55), 0 1px 2px rgba(0,0,0,0.12); }
   a { color: inherit; }
   img { max-width: 100%; }
 
@@ -108,7 +108,7 @@
       var(--linen) 0px, var(--linen) 34px,
       var(--clay) 34px, var(--clay) 40px,
       var(--linen) 40px, var(--linen) 58px,
-      var(--sea-deep) 58px, var(--sea-deep) 64px,
+      #A9C9DE 58px, #A9C9DE 64px,
       var(--linen) 64px, var(--linen) 98px
     );
   }
@@ -135,12 +135,10 @@
     gap: 6px 16px;
   }
   .brand-row .names {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    font-size: 1.15rem;
+    font-family: 'Pinyon Script', cursive;
+    font-weight: 400;
+    font-size: 1.8rem;
     color: var(--clay);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
   }
   .brand-row .date { color: var(--onbg-soft); font-size: 0.92rem; }
 
@@ -158,8 +156,8 @@
     appearance: none;
     border: none;
     background: none;
-    font-family: 'Work Sans', sans-serif;
-    font-size: 0.9rem;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1rem;
     color: var(--onbg-soft);
     padding: 10px 14px;
     cursor: pointer;
@@ -184,9 +182,8 @@
     .hero { grid-template-columns: 1fr; padding-top: 28px; }
   }
   .hero h1 {
-    font-size: 1.5rem;
-    font-style: italic;
-    line-height: 1.05;
+    font-size: 2.6rem;
+    line-height: 1.15;
     margin: 0 0 14px;
     color: var(--clay);
   }
@@ -212,7 +209,7 @@
 
   section.block { margin-bottom: 44px; }
   section.block > h2 {
-    font-size: 1.5rem;
+    font-size: 2.3rem;
     margin: 0 0 6px;
     color: var(--clay);
   }
@@ -225,9 +222,11 @@
   /* ---------- Timeline (Programme) ---------- */
   .day-group { margin-bottom: 30px; }
   .day-group h3 {
+    font-family: 'Playfair Display', serif;
     font-size: 1.05rem;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--clay);
+    text-shadow: none;
     margin: 0 0 14px;
     padding-bottom: 8px;
     border-bottom: 1px solid var(--line-onbg);
@@ -400,7 +399,7 @@
   .suggestions div { padding: 10px 14px; cursor: pointer; font-size: 0.92rem; }
   .suggestions div:hover { background: var(--todo-bg); }
   .guest-result { margin-top: 20px; max-width: 480px; }
-  .guest-result h3 { margin: 0 0 4px; color: var(--clay); }
+  .guest-result h3 { margin: 0 0 6px; font-size: 2.1rem; line-height: 1.2; color: var(--clay); }
   .guest-result .plusone { color: var(--onbg-soft); font-size: 0.92rem; margin-bottom: 12px; }
   .event-list { list-style: none; padding: 0; margin: 0 0 18px; }
   .event-list li {
@@ -485,10 +484,10 @@
                   fill="none" stroke="var(--redcircle)" stroke-width="3" stroke-linecap="round" transform="translate(795,220) rotate(-6)"/>
             <text x="795" y="178" text-anchor="middle" class="handwritten map-label" font-size="24" transform="rotate(-2 795 178)">Chapelle du Pouldu</text>
 
-            <!-- ===== Chez Mamie A ===== -->
+            <!-- ===== Chez Mamie Armelle ===== -->
             <path d="M-22,5 C-24,-12 -11,-27 6,-26 C23,-25 36,-10 34,8 C32,24 18,37 2,35 C-13,33 -19,21 -22,5 Z"
                   fill="none" stroke="var(--redcircle)" stroke-width="3" stroke-linecap="round" transform="translate(436,147) rotate(5)"/>
-            <text x="380" y="112" class="handwritten map-label" font-size="24" transform="rotate(-2 380 112)">Chez Mamie A</text>
+            <text x="380" y="112" class="handwritten map-label" font-size="24" transform="rotate(-2 380 112)">Chez Mamie Armelle</text>
 
             <!-- ===== Plage de la Roche Percée ===== -->
             <path d="M-16,4 C-17,-9 -8,-19 4,-18 C16,-17 25,-7 24,6 C23,17 13,26 1,25 C-9,24 -14,15 -16,4 Z"
@@ -529,7 +528,7 @@
         </div>
       </div>
       <div class="todo" style="margin-top:18px;">
-        <b>À compléter :</b> un plan d'accès et de stationnement détaillé sera ajouté pour « Chez Mamie A ».
+        <b>À compléter :</b> un plan d'accès et de stationnement détaillé sera ajouté pour « Chez Mamie Armelle ».
       </div>
     </section>
 
@@ -568,7 +567,7 @@
       <h2>Confirmer votre présence</h2>
       <p class="intro">Tapez votre nom pour voir à quels moments du week-end vous êtes convié·e.</p>
       <div class="preview-banner" id="preview-banner">
-        Aperçu avec des noms d'exemple — la vraie liste des invités sera intégrée avant la mise en ligne. Essayez « Camille », « Thomas » ou « Anna ».
+        La liste des invités est en cours de finalisation — si vous ne trouvez pas votre nom, contactez directement les mariés.
       </div>
       <div class="search-wrap">
         <input type="text" id="guest-search" placeholder="Votre nom et prénom" autocomplete="off">
@@ -597,7 +596,7 @@
 
 </main>
 
-<footer>Faustine &amp; Jean-Baptiste · 31 juillet &amp; 1er août 2027 · Clohars-Carnoët, Bretagne</footer>
+<footer><span class="display" style="font-size:1.4rem;">Faustine &amp; Jean-Baptiste</span><br>31 juillet &amp; 1er août 2027 · Clohars-Carnoët, Bretagne</footer>
 
 <script>
 (function(){
@@ -631,7 +630,7 @@
       address: "Chapelle Notre-Dame-de-la-Paix, Le Pouldu, 29360 Clohars-Carnoët"
     },
     mamie: {
-      name: "Chez Mamie A",
+      name: "Chez Mamie Armelle",
       place: "Kervelan, Clohars-Carnoët",
       address: "71 route de Porsac'h, Kervelan, 29350 Clohars-Carnoët",
       note: "Un plan d'accès et de stationnement sera ajouté prochainement."
@@ -644,7 +643,7 @@
     bois: {
       name: "Bois de la Grange",
       place: "Doëlan, Clohars-Carnoët",
-      address: "17 Bois de la Grange, Doëlan, 29360 Clohars-Carnoët"
+      address: "10 Bois de la Grange, Doëlan, 29360 Clohars-Carnoët"
     }
   };
 
@@ -703,16 +702,157 @@
     venuesEl.appendChild(li);
   });
 
-  // ---------- RSVP demo data ----------
+  // ---------- RSVP data ----------
   var EVENT_LABELS = {
-    samedi: "Cérémonie, cocktail et dîner — samedi 31 juillet",
-    brunch: "Brunch et après-midi plage — dimanche 1er août",
-    rebond: "Rebond du dimanche soir — 1er août"
+    eglise: "Cérémonie religieuse — samedi 31 juillet, 15h00",
+    cocktail: "Cocktail — samedi 31 juillet, 18h00",
+    diner: "Dîner &amp; soirée — samedi 31 juillet, 20h30",
+    brunch: "Brunch — dimanche 1er août, 12h30",
+    rebond: "Rebond — dimanche 1er août, 19h30"
   };
   var GUESTS = [
-    { name: "Camille Hervé", plusOne: null, events: ["samedi"] },
-    { name: "Thomas Le Gall", plusOne: "Élodie Le Gall", events: ["samedi","brunch","rebond"] },
-    { name: "Anna Kervella", plusOne: null, events: ["samedi","brunch"] }
+    { name: 'Jean-Baptiste Abily', plusOne: 'Faustine Duboureau', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Olivier Abily', plusOne: 'Anne-Christine Abily', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Augustin Abily', plusOne: 'Georgia Cole', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Louis Abily', plusOne: 'Raphaelle Barcelo', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Yves Abily', plusOne: 'Laurence Abily', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Herve Caroff', plusOne: 'Gwen Caroff', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Vianney Caroff', plusOne: 'Morgane Kersimon', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Raphaelle Caroff', plusOne: 'Nance Renard', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Jurgen Stritt', plusOne: 'Francoise-Marie Stritt', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Perrine Stritt', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Vincent Le Guennou', plusOne: 'Aurelie Pujol - Le Guennou', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Naomi Djiena Wembou', plusOne: 'Lionel Djiena Wembou', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Erwan Le Guennou', plusOne: 'Carol-Ann Le Guennou', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Maeva Le Guennou', plusOne: 'Martin Leservoisier', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Jean Kerros', plusOne: 'Annick Kerros', events: ['eglise', 'cocktail'] },
+    { name: 'Benoit Kerros', plusOne: 'Sabine Kerros', events: ['eglise', 'cocktail'] },
+    { name: 'Arnaud Salvi', plusOne: 'Céline Salvi', events: ['eglise', 'cocktail'] },
+    { name: 'Helene Long', plusOne: 'Stephane Long', events: ['eglise', 'cocktail'] },
+    { name: 'Ludovic Crunelle', plusOne: 'Regine Crunelle', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Margaux Denzer', plusOne: 'Gauthier Denzer', events: ['eglise', 'cocktail'] },
+    { name: 'Patrice Betge', plusOne: 'Beatrice Betge', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Yves-Marie Le Cerf', plusOne: 'Véronique Le Cerf', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Christophe Le Rohellec', plusOne: 'Françoise Le Rohellec', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Benoît Nivert', plusOne: 'Christine Nivert', events: ['eglise', 'cocktail'] },
+    { name: 'Antoine Sina', plusOne: 'Angela Sina', events: ['eglise', 'cocktail'] },
+    { name: 'Jean-Claude Carrere', plusOne: null, events: ['eglise', 'cocktail'] },
+    { name: 'Alexandre Le Bruchec', plusOne: 'Garance Hourcade', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Othmane Sabir', plusOne: 'Lucie Frechin', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Youssef Chadali', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Valentin Arfi', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Jules Arnaud', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Baudouin Bonnet', plusOne: 'Jeanne Bonnet', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Antoine Dlb', plusOne: 'Marie Dlb', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Hugo Lopez', plusOne: 'Lea Le Bescou', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Lucas Sagard', plusOne: 'Camille Da Silva', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Wassim Androussi', plusOne: 'Ninon Duyck', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Tom Orazi', plusOne: 'Chloe Maire', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Louis Labat', plusOne: 'Gersende Labat', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Matthieu De Butler', plusOne: 'Armelle De Butler', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Hugo Aventin', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Adrien Casa', plusOne: 'Camille Casa', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Rouslan Tysch', plusOne: 'Earine Tysch', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Alan Holdsworth', plusOne: 'Gladys Holdsworth', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Igor Hemery', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Pierre-Louis Robert', plusOne: 'Clara Laporte', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Erwan-Mari Raoul', plusOne: 'Marion Raoul', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Alexandre Guegan', plusOne: 'Julie Guegan', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Andreas Reding', plusOne: 'Alexandra Reding', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Gregoire Delcourt', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Olivier Duboureau', plusOne: 'Marie-Laure Duboureau Blezat', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Patrick Armengau', plusOne: 'Marie Christine Armengau', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Alain Dartiguenave', plusOne: 'Annick Dartiguenave', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Christophe Delafontaine', plusOne: 'Anne Delafontaine', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Thierry Delaye', plusOne: 'Catherine Delaye', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Frédéric Reux', plusOne: 'Sandrine Chamousset Reux', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Hortense Dartiguenave', plusOne: 'Louis Dartiguenave', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Perrine Hachem', plusOne: 'Ali Hachem', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Hugues Vincent-Genod', plusOne: 'Megha Vincent-Genod', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Pierre Blezat', plusOne: 'Yves Rocha Binet', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Georges Blezat', plusOne: 'Catherine Blezat', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Isabelle Cau', plusOne: 'Alain Combier', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Clement Combier', plusOne: 'Chloe Combier', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Alice Combier', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Victor Desnoyer', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Catherine Rey', plusOne: 'Patrick Rey', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Pauline Provence', plusOne: 'Julien Provence', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Charlotte Rey', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Jacques Duboureau', plusOne: 'Nicole Duboureau', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Dorothee Escudier', plusOne: 'Laurent Escudier', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Mathilde Duboureau', plusOne: 'Paul-Vincent Gregot', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Julie Nogues', plusOne: 'Simon Nogues', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Adrien Mouronval', plusOne: 'Linda Piras', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Jade Ameline', plusOne: 'Teo Hansjacob', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Andrea Haddad', plusOne: 'Florient Longueville', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Aurelie Jay', plusOne: 'Henry Walsh', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Julie Chavet', plusOne: 'Lucas Hdf', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Lisa Quarello', plusOne: 'Victor Espuna', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Margaux Gianoli', plusOne: 'Eloi Bernoud', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Ludivine Parent', plusOne: 'Cesar Parent', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Louise Delannoy', plusOne: 'Simon Delannoy', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Yassine Jenanne', plusOne: 'Fadoua Jenanne', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Antoine Abily', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Annick Abily', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Armelle Rolland', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Marjorie Abily', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Alexandre Abily', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Axelle Abily', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Marion Caroff', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Eliott Le Part', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Marin Stritt', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Côme Stritt', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Xavier Rolland', plusOne: null, events: ['eglise', 'cocktail'] },
+    { name: 'Louise Le Guennou', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Victor Kerros', plusOne: null, events: ['eglise', 'cocktail'] },
+    { name: 'Lisa Kerros', plusOne: null, events: ['eglise', 'cocktail'] },
+    { name: 'Elorn Kerros', plusOne: null, events: ['eglise', 'cocktail'] },
+    { name: 'Leonie Kerros', plusOne: null, events: ['eglise', 'cocktail'] },
+    { name: 'Brigitte Penfrat', plusOne: null, events: ['eglise', 'cocktail'] },
+    { name: 'Jacqueline Le Guennou', plusOne: null, events: ['eglise', 'cocktail'] },
+    { name: 'Maurice Le Guennou', plusOne: null, events: ['eglise', 'cocktail'] },
+    { name: 'Jean-Paul Le Guennou', plusOne: null, events: ['eglise', 'cocktail'] },
+    { name: 'Jean (pere) Marc', plusOne: null, events: ['eglise', 'cocktail'] },
+    { name: 'Clara Hdf', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Antoine Reuling', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Maxime Samain', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Quentin Tolo', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Adrian Bichat', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Edouard Le Bigot', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Fatou Cisse', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Maxime Glize', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Louis Le Bouteille', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Kiran Beckett', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'James Myburgh', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Louis Hugot', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Ignacio Deprit', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Jaime Fuster', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Nicolas Nguyen', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Micka Sadoun', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Sébastien (père) De Groulard', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Lucie Vincent-Genod', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Emma Combier', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Jacqueline Cau', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Marie-Jose Desnoyer', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Emilie Desnoyer', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Melanie Desnoyer', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Nicolas Rey', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Benjamin Duboureau', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'France Duboureau', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Chloe Mouronval', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Louise Mouronval', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Raphaelle Thervet', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Antoine Dauphin', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Koupaia Gueguen', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Armand Rouch', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Emma Casamian', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { name: 'Elise Aouizerate', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Raphael Hamon', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Victoria Bernard', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Lauralyn Dhaine', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Maelys Lenshener', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Antoine Colle', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { name: 'Amelie Cazalet', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
   ];
 
   function normalize(s){
