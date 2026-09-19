@@ -423,9 +423,74 @@
     color: var(--onbg-soft);
     font-size: 0.82rem;
   }
+
+  /* ---------- Guest gate (identification overlay) ---------- */
+  .guest-gate {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: color-mix(in srgb, var(--linen) 90%, black 10%);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    padding-top: calc(20px + env(safe-area-inset-top, 0px));
+    padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  }
+  .guest-gate.visible { display: flex; }
+  .guest-gate-card {
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 34px 26px;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    color: var(--stone);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.14);
+  }
+  .guest-gate-card h2 { margin: 0 0 12px; font-size: 2.4rem; color: var(--clay); text-shadow: none; }
+  .guest-gate-kicker {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--stone-soft);
+    margin: 0 0 4px;
+  }
+  .guest-gate-sub { color: var(--stone-soft); margin: 0 0 18px; font-size: 0.95rem; }
+  .guest-gate-hint { color: var(--stone-soft); font-size: 0.8rem; margin: 16px 0 0; }
+  .guest-gate .search-wrap { margin: 0 auto; text-align: left; }
+  .guest-gate .no-match { text-align: center; }
+
+  .reset-guest-link {
+    appearance: none;
+    border: none;
+    background: none;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.82rem;
+    color: var(--onbg-soft);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    cursor: pointer;
+    padding: 6px 0 0;
+    display: block;
+  }
 </style>
 </head>
 <body>
+<div class="guest-gate" id="guest-gate">
+  <div class="guest-gate-card">
+    <p class="guest-gate-kicker">Bienvenue&nbsp;!</p>
+    <h2 class="display">Faustine &amp; Jean-Baptiste</h2>
+    <p class="guest-gate-sub">Pour vous montrer le programme qui vous concerne, dites-nous qui vous êtes&nbsp;:</p>
+    <div class="search-wrap">
+      <input type="text" id="gate-search" placeholder="Votre nom et prénom" autocomplete="off">
+      <div class="suggestions" id="gate-suggestions" style="display:none;"></div>
+    </div>
+    <p class="guest-gate-hint">Vous ne trouvez pas votre nom&nbsp;? Contactez directement les mariés.</p>
+  </div>
+</div>
 <div class="stripe-bar"></div>
 <header class="top">
   <div class="top-inner">
@@ -440,6 +505,7 @@
       <button data-tab="rsvp">RSVP</button>
       <button data-tab="liste">Liste de mariage</button>
     </nav>
+    <button type="button" id="reset-guest" class="reset-guest-link" style="display:none;">Ce n'est pas moi&nbsp;?</button>
   </div>
 </header>
 
@@ -565,13 +631,9 @@
   <div class="panel" id="panel-rsvp">
     <section class="block">
       <h2>Confirmer votre présence</h2>
-      <p class="intro">Tapez votre nom pour voir à quels moments du week-end vous êtes convié·e.</p>
+      <p class="intro">Voici les moments du week-end auxquels vous êtes convié·e.</p>
       <div class="preview-banner" id="preview-banner">
-        La liste des invités est en cours de finalisation — si vous ne trouvez pas votre nom, contactez directement les mariés.
-      </div>
-      <div class="search-wrap">
-        <input type="text" id="guest-search" placeholder="Votre nom et prénom" autocomplete="off">
-        <div class="suggestions" id="suggestions" style="display:none;"></div>
+        La liste des invités est en cours de finalisation — si les informations ci-dessous vous semblent incorrectes, contactez directement les mariés.
       </div>
       <div id="guest-result"></div>
     </section>
@@ -654,14 +716,14 @@
 
   var PROGRAMME = [
     { day: "Samedi 31 juillet", icon: "piment", items: [
-      { time: "15h00", title: "Cérémonie religieuse", venue: "chapelle" },
-      { time: "18h00", title: "Cocktail", venue: "mamie" },
-      { time: "20h30", title: "Dîner", venue: "mamie" }
+      { time: "15h00", title: "Cérémonie religieuse", venue: "chapelle", event: "eglise" },
+      { time: "18h00", title: "Cocktail", venue: "mamie", event: "cocktail" },
+      { time: "20h30", title: "Dîner", venue: "mamie", event: "diner" }
     ]},
     { day: "Dimanche 1er août", icon: "coquillage", items: [
-      { time: "12h30", title: "Brunch", venue: "mamie" },
-      { time: "15h00", title: "Après-midi plage", venue: "plage" },
-      { time: "19h30", title: "Rebond", venue: "bois" }
+      { time: "12h30", title: "Brunch", venue: "mamie", event: "brunch" },
+      { time: "15h00", title: "Après-midi plage", venue: "plage", event: "brunch" },
+      { time: "19h30", title: "Rebond", venue: "bois", event: "rebond" }
     ]}
   ];
 
@@ -677,6 +739,7 @@
       var v = VENUES[item.venue];
       var row = document.createElement('div');
       row.className = 'timeline-item';
+      row.dataset.event = item.event;
       row.innerHTML =
         '<div class="time">' + item.time + '</div>' +
         '<div>' +
@@ -859,13 +922,21 @@
     return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
   }
 
-  var searchInput = document.getElementById('guest-search');
-  var suggestionsEl = document.getElementById('suggestions');
-  var resultEl = document.getElementById('guest-result');
+  function getMatches(q){
+    q = normalize(q);
+    if (!q) return [];
+    return GUESTS.filter(function(g){
+      return normalize(g.name).indexOf(q) !== -1 ||
+             (g.plusOne && normalize(g.plusOne).indexOf(q) !== -1);
+    });
+  }
 
   function displayName(guest){
     return guest.plusOne ? guest.name + ' &amp; ' + guest.plusOne : guest.name;
   }
+
+  // ---------- RSVP panel ----------
+  var resultEl = document.getElementById('guest-result');
 
   function renderGuest(guest){
     var html = '<div class="guest-result">';
@@ -881,33 +952,92 @@
     resultEl.innerHTML = html;
   }
 
-  searchInput.addEventListener('input', function(){
-    var q = normalize(searchInput.value);
-    resultEl.innerHTML = '';
-    if (!q) { suggestionsEl.style.display = 'none'; return; }
-    var matches = GUESTS.filter(function(g){
-      return normalize(g.name).indexOf(q) !== -1 ||
-             (g.plusOne && normalize(g.plusOne).indexOf(q) !== -1);
+  // ---------- Guest gate (identification at entry) ----------
+  var GUEST_STORAGE_KEY = 'mariage-fjb-guest';
+  var gateEl = document.getElementById('guest-gate');
+  var gateSearchInput = document.getElementById('gate-search');
+  var gateSuggestionsEl = document.getElementById('gate-suggestions');
+  var resetGuestBtn = document.getElementById('reset-guest');
+
+  function saveGuest(guest){
+    try { localStorage.setItem(GUEST_STORAGE_KEY, JSON.stringify(guest)); } catch(e){}
+  }
+  function loadGuest(){
+    try {
+      var raw = localStorage.getItem(GUEST_STORAGE_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch(e){ return null; }
+  }
+  function clearGuest(){
+    try { localStorage.removeItem(GUEST_STORAGE_KEY); } catch(e){}
+  }
+
+  function filterProgrammeForGuest(events){
+    document.querySelectorAll('.day-group').forEach(function(group){
+      var anyVisible = false;
+      group.querySelectorAll('.timeline-item').forEach(function(row){
+        var show = events.indexOf(row.dataset.event) !== -1;
+        row.style.display = show ? '' : 'none';
+        if (show) anyVisible = true;
+      });
+      group.style.display = anyVisible ? '' : 'none';
     });
+  }
+
+  function applyGuest(guest){
+    filterProgrammeForGuest(guest.events);
+    renderGuest(guest);
+    resetGuestBtn.style.display = 'block';
+    gateEl.classList.remove('visible');
+    var programmeBtn = document.querySelector('#tabs button[data-tab="programme"]');
+    if (programmeBtn) programmeBtn.click();
+  }
+
+  function showGate(){
+    gateEl.classList.add('visible');
+    gateSearchInput.value = '';
+    gateSuggestionsEl.style.display = 'none';
+    gateSearchInput.focus();
+  }
+
+  gateSearchInput.addEventListener('input', function(){
+    var matches = getMatches(gateSearchInput.value);
+    if (!gateSearchInput.value.trim()) { gateSuggestionsEl.style.display = 'none'; return; }
     if (!matches.length) {
-      suggestionsEl.style.display = 'none';
-      resultEl.innerHTML = '<p class="no-match">Aucun invité trouvé avec ce nom. Vérifiez l\'orthographe ou contactez les mariés.</p>';
+      gateSuggestionsEl.innerHTML = '<div style="padding:10px 14px; cursor:default; color:var(--stone-soft);">Aucun invité trouvé. Vérifiez l\'orthographe.</div>';
+      gateSuggestionsEl.style.display = 'block';
       return;
     }
-    suggestionsEl.innerHTML = matches.map(function(g){ return '<div>' + displayName(g) + '</div>'; }).join('');
-    suggestionsEl.style.display = 'block';
-    Array.from(suggestionsEl.children).forEach(function(el, i){
+    gateSuggestionsEl.innerHTML = matches.map(function(g){ return '<div>' + displayName(g) + '</div>'; }).join('');
+    gateSuggestionsEl.style.display = 'block';
+    Array.from(gateSuggestionsEl.children).forEach(function(el, i){
       el.addEventListener('click', function(){
-        searchInput.value = matches[i].name;
-        suggestionsEl.style.display = 'none';
-        renderGuest(matches[i]);
+        var guest = matches[i];
+        saveGuest(guest);
+        applyGuest(guest);
       });
     });
   });
 
-  document.addEventListener('click', function(e){
-    if (!e.target.closest('.search-wrap')) suggestionsEl.style.display = 'none';
+  resetGuestBtn.addEventListener('click', function(){
+    clearGuest();
+    resetGuestBtn.style.display = 'none';
+    resultEl.innerHTML = '';
+    showGate();
   });
+
+  document.addEventListener('click', function(e){
+    if (!e.target.closest('.search-wrap')) {
+      gateSuggestionsEl.style.display = 'none';
+    }
+  });
+
+  var savedGuest = loadGuest();
+  if (savedGuest) {
+    applyGuest(savedGuest);
+  } else {
+    showGate();
+  }
 
 })();
 </script>
