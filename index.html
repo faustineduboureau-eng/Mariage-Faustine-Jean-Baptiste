@@ -364,6 +364,16 @@
   @media (max-width: 720px) { .info-grid { grid-template-columns: 1fr; } }
   .info-grid .card h4 { margin: 0 0 8px; font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; }
   .info-grid .card p { margin: 0; color: var(--stone-soft); font-size: 0.92rem; line-height: 1.5; }
+  .info-grid .card .bullet-list {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--stone-soft);
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+  .info-grid .card .bullet-list li { margin-bottom: 8px; }
+  .info-grid .card .bullet-list li:last-child { margin-bottom: 0; }
+  .info-grid .card .bullet-list b { color: var(--stone); }
 
   /* ---------- RSVP ---------- */
   .preview-banner {
@@ -474,6 +484,7 @@
     text-underline-offset: 2px;
     cursor: pointer;
     padding: 6px 0 0;
+    margin-bottom: 14px;
     display: block;
   }
 </style>
@@ -500,7 +511,7 @@
     </div>
     <nav class="tabs" id="tabs">
       <button data-tab="programme" class="active">Programme</button>
-      <button data-tab="venir">Venir &amp; covoiturage</button>
+      <button data-tab="venir">Se rendre à Clohars</button>
       <button data-tab="logement">Logement</button>
       <button data-tab="rsvp">RSVP</button>
       <button data-tab="liste">Liste de mariage</button>
@@ -511,8 +522,8 @@
 
 <div class="hero">
   <div>
-  <h1>Degemer mat&nbsp;!</h1>
-    <p class="sub">Deux jours au bord de l'océan, entre le Pouldu, Kervelan et Doëlan, dans le Finistère sud — cérémonie, fête, brunch et un dernier tour à la plage avant de se quitter&nbsp;!</p>
+  <h1 id="hero-title">Degemer mat&nbsp;!</h1>
+    <p class="sub" id="hero-sub">Deux jours au bord de l'océan, entre le Pouldu, Kervelan et Doëlan, dans le Finistère sud — cérémonie, fête, brunch et un dernier tour à la plage avant de se quitter&nbsp;!</p>
     <div class="hero-divider"><span></span><span></span></div>
   </div>
   
@@ -530,7 +541,6 @@
 
     <section class="block">
       <h2>Les lieux</h2>
-      <p class="intro">Quatre lieux, tous à quelques minutes les uns des autres, entre Le Pouldu, Kervelan et Doëlan.</p>
 
       <div class="map-frame">
         <div class="map-photo-wrap">
@@ -546,24 +556,32 @@
             <text x="945" y="26" text-anchor="middle" class="handwritten" font-size="17" fill="var(--stone)">N</text>
 
             <!-- ===== Chapelle du Pouldu ===== -->
+            <g class="venue-mark" data-venue="chapelle">
             <path d="M-22,5 C-24,-12 -11,-27 6,-26 C23,-25 36,-10 34,8 C32,24 18,37 2,35 C-13,33 -19,21 -22,5 Z"
                   fill="none" stroke="var(--redcircle)" stroke-width="3" stroke-linecap="round" transform="translate(795,220) rotate(-6)"/>
             <text x="795" y="178" text-anchor="middle" class="handwritten map-label" font-size="24" transform="rotate(-2 795 178)">Chapelle du Pouldu</text>
+            </g>
 
             <!-- ===== Chez Mamie Armelle ===== -->
+            <g class="venue-mark" data-venue="mamie">
             <path d="M-22,5 C-24,-12 -11,-27 6,-26 C23,-25 36,-10 34,8 C32,24 18,37 2,35 C-13,33 -19,21 -22,5 Z"
                   fill="none" stroke="var(--redcircle)" stroke-width="3" stroke-linecap="round" transform="translate(436,147) rotate(5)"/>
             <text x="380" y="112" class="handwritten map-label" font-size="24" transform="rotate(-2 380 112)">Chez Mamie Armelle</text>
+            </g>
 
             <!-- ===== Plage de la Roche Percée ===== -->
+            <g class="venue-mark" data-venue="plage">
             <path d="M-16,4 C-17,-9 -8,-19 4,-18 C16,-17 25,-7 24,6 C23,17 13,26 1,25 C-9,24 -14,15 -16,4 Z"
                   fill="none" stroke="var(--redcircle)" stroke-width="3" stroke-linecap="round" transform="translate(372,186) rotate(-4)"/>
             <text x="286" y="238" class="handwritten map-label" font-size="24" transform="rotate(2 286 238)">Plage de la Roche Percée</text>
+            </g>
 
             <!-- ===== Bois de la Grange ===== -->
+            <g class="venue-mark" data-venue="bois">
             <path d="M-14,3 C-15,-8 -7,-17 4,-16 C15,-15 22,-6 21,5 C20,15 12,23 1,22 C-8,21 -13,13 -14,3 Z"
                   fill="none" stroke="var(--redcircle)" stroke-width="3" stroke-linecap="round" transform="translate(118,30) rotate(6)"/>
             <text x="18" y="95" class="handwritten map-label" font-size="24" transform="rotate(-2 18 95)">Bois de la Grange</text>
+            </g>
 
             <text x="22" y="360" class="handwritten map-label small" font-size="16">carte pas à l'échelle, juste pour se repérer</text>
           </svg>
@@ -578,30 +596,48 @@
   <div class="panel" id="panel-venir">
     <section class="block">
       <h2>Comment venir</h2>
-      <p class="intro">Clohars-Carnoët se trouve dans le Finistère, entre Quimperlé et Concarneau, sur la côte sud de la Bretagne.</p>
       <div class="info-grid">
         <div class="card">
           <h4>En train</h4>
-          <p>Gare de Quimperlé, à environ 15 minutes de route. Gare de Lorient, un peu plus loin (35 min), avec davantage de correspondances TGV depuis Paris ou Rennes.</p>
+          <ul class="bullet-list">
+            <li><b>Depuis Paris</b> (Gare Montparnasse) : train direct jusqu'à Quimperlé, ~3h40.</li>
+            <li><b>Depuis Bordeaux</b> : pas de train direct, avec correspondance (souvent via Paris ou Nantes), ~6h45.</li>
+            <li><b>Depuis Lyon</b> : pas de train direct, avec correspondance (souvent via Rennes), ~6h45.</li>
+            <li><b>Depuis Marseille</b> : pas de train direct, avec correspondance (souvent via Rennes ou Paris), ~8h45.</li>
+          </ul>
+          <p style="margin-top:10px; color: var(--stone);">Depuis la gare de Quimperlé, comptez environ 15 à 20 minutes de route jusqu'à Moëlan-sur-Mer / Clohars-Carnoët.</p>
+          <p style="margin-top:10px; font-style: italic;">Nota : il y a souvent un changement à Lorient — vous pouvez aussi terminer votre trajet en train à Lorient, puis compter environ 35 minutes de route jusqu'à Clohars-Carnoët.</p>
         </div>
         <div class="card">
           <h4>En avion</h4>
-          <p>Aéroport de Lorient Bretagne Sud (environ 40 min). Sinon, Nantes Atlantique ou Rennes, à environ 2h de route.</p>
+          <p style="margin-bottom:6px;"><b>Aéroport de Brest Bretagne</b></p>
+          <ul class="bullet-list" style="margin-bottom:14px;">
+            <li>Desservi entre autres par Air France (Paris), Volotea, Transavia et easyJet, avec des liaisons vers Paris, Lyon, Marseille, Nice, Toulouse et Montpellier selon la saison.</li>
+            <li>Compter environ 1h25 de voiture depuis Brest. Pas de navette directe jusqu'à Clohars-Carnoët, il faudra ensuite louer une voiture ou prendre un taxi.</li>
+          </ul>
+          <p style="margin-bottom:6px;"><b>Aéroport de Nantes Atlantique</b></p>
+          <ul class="bullet-list">
+            <li>Desservi par de nombreuses compagnies (Air France, Volotea, easyJet, Transavia, Ryanair...), avec des vols directs depuis Paris, Lyon, Marseille, Bordeaux, Toulouse et Nice.</li>
+            <li>Compter environ 2h10 de voiture depuis Nantes. Pas de navette directe jusqu'à Clohars-Carnoët, il faudra ensuite louer une voiture ou prendre un taxi.</li>
+          </ul>
         </div>
         <div class="card">
           <h4>En voiture</h4>
-          <p>Depuis Nantes ou Rennes : voie express N165 direction Lorient / Quimper, sortie Quimperlé, puis direction Moëlan-sur-Mer et Clohars-Carnoët.</p>
+          <ul class="bullet-list">
+            <li><b>Depuis Paris</b> (~550 km, ~4h50) : A11 direction Rennes, puis N24 vers Lorient, puis N165 direction Quimper, sortie Quimperlé.</li>
+            <li><b>Depuis Bordeaux</b> (~535 km, ~5h15) : A10 direction Nantes, puis N165 direction Lorient/Quimper, sortie Quimperlé.</li>
+            <li><b>Depuis Lyon</b> (~860 km, ~8h15) : A89 direction Bordeaux/Clermont-Ferrand, puis A85 direction Nantes/Tours, puis N165 direction Quimper, sortie Quimperlé.</li>
+            <li><b>Depuis Marseille</b> (~1 020 km, ~9h45) : A7 direction Lyon, puis A89/A85 direction Nantes, puis N165 direction Quimper, sortie Quimperlé.</li>
+          </ul>
+          <p style="margin-top:10px; color: var(--stone);">Puis direction Moëlan-sur-Mer et Clohars-Carnoët.</p>
         </div>
-      </div>
-      <div class="todo" style="margin-top:18px;">
-        <b>À compléter :</b> un plan d'accès et de stationnement détaillé sera ajouté pour « Chez Mamie Armelle ».
       </div>
     </section>
 
     <section class="block">
       <h2>Covoiturage</h2>
-      <p class="intro">Vous avez de la place dans la voiture, ou vous en cherchez une ? Un formulaire commun permet à tout le monde de proposer ou de trouver un trajet.</p>
-      <a href="#" class="btn pending">Proposer / chercher un covoiturage — lien à venir</a>
+      <p class="intro">Vous avez de la place dans votre voiture, ou vous en cherchez une ? Postez votre trajet ou votre besoin dans le groupe WhatsApp dédié.</p>
+      <a href="https://chat.whatsapp.com/DDXBGZBcWUQIvuOUAjduYM" target="_blank" rel="noopener" class="btn">Rejoindre le groupe covoiturage WhatsApp</a>
     </section>
   </div>
 
@@ -631,7 +667,6 @@
   <div class="panel" id="panel-rsvp">
     <section class="block">
       <h2>Confirmer votre présence</h2>
-      <p class="intro">Voici les moments du week-end auxquels vous êtes convié·e.</p>
       <div class="preview-banner" id="preview-banner">
         La liste des invités est en cours de finalisation — si les informations ci-dessous vous semblent incorrectes, contactez directement les mariés.
       </div>
@@ -665,6 +700,22 @@
   "use strict";
 
   // ---------- Tabs ----------
+  var HERO_CONTENT = {
+    venir: {
+      title: "War-hent&nbsp;!",
+      sub: "En breton, « en route ! ». Clohars-Carnoët se trouve dans le Finistère, entre Quimperlé et Concarneau, sur la côte sud de la Bretagne. Voici toutes les façons de nous rejoindre, en train, en avion, en voiture ou en covoiturage."
+    },
+    rsvp: {
+      title: "Ya pe ket&nbsp;?",
+      sub: "En breton, « oui ou non ? ». On a hâte de savoir si vous serez des nôtres&nbsp;! Voici les moments du week-end auxquels vous êtes convié·e — merci de confirmer votre présence avant le 28 avril 2027 pour nous aider à tout organiser."
+    }
+  };
+  var DEFAULT_HERO = {
+    title: "Degemer mat&nbsp;!",
+    sub: "Deux jours au bord de l'océan, entre le Pouldu, Kervelan et Doëlan, dans le Finistère sud — cérémonie, fête, brunch et un dernier tour à la plage avant de se quitter&nbsp;!"
+  };
+  var heroTitleEl = document.getElementById('hero-title');
+  var heroSubEl = document.getElementById('hero-sub');
   var tabButtons = document.querySelectorAll('#tabs button');
   tabButtons.forEach(function(btn){
     btn.addEventListener('click', function(){
@@ -672,6 +723,9 @@
       btn.classList.add('active');
       document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
       document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+      var hero = HERO_CONTENT[btn.dataset.tab] || DEFAULT_HERO;
+      heroTitleEl.innerHTML = hero.title;
+      heroSubEl.innerHTML = hero.sub;
       try { localStorage.setItem('mariage-fjb-tab', btn.dataset.tab); } catch(e){}
       window.scrollTo({top:0, behavior:'smooth'});
     });
@@ -757,6 +811,7 @@
     var v = VENUES[key];
     var encoded = encodeURIComponent(v.address);
     var li = document.createElement('li');
+    li.dataset.venue = key;
     li.innerHTML =
       '<span class="lbl">' + v.name + '</span>' +
       '<span class="addr2">' + v.address + '</span>' +
@@ -953,23 +1008,27 @@
   }
 
   // ---------- Guest gate (identification at entry) ----------
-  var GUEST_STORAGE_KEY = 'mariage-fjb-guest';
   var gateEl = document.getElementById('guest-gate');
   var gateSearchInput = document.getElementById('gate-search');
   var gateSuggestionsEl = document.getElementById('gate-suggestions');
   var resetGuestBtn = document.getElementById('reset-guest');
 
-  function saveGuest(guest){
-    try { localStorage.setItem(GUEST_STORAGE_KEY, JSON.stringify(guest)); } catch(e){}
-  }
-  function loadGuest(){
-    try {
-      var raw = localStorage.getItem(GUEST_STORAGE_KEY);
-      return raw ? JSON.parse(raw) : null;
-    } catch(e){ return null; }
-  }
-  function clearGuest(){
-    try { localStorage.removeItem(GUEST_STORAGE_KEY); } catch(e){}
+  // Build a venue -> events map from the programme data (e.g. mamie hosts cocktail, diner and brunch)
+  var VENUE_EVENTS = {};
+  PROGRAMME.forEach(function(day){
+    day.items.forEach(function(item){
+      if (!VENUE_EVENTS[item.venue]) VENUE_EVENTS[item.venue] = [];
+      if (VENUE_EVENTS[item.venue].indexOf(item.event) === -1) VENUE_EVENTS[item.venue].push(item.event);
+    });
+  });
+
+  function filterVenuesForGuest(events){
+    Object.keys(VENUE_EVENTS).forEach(function(venueKey){
+      var relevant = VENUE_EVENTS[venueKey].some(function(ev){ return events.indexOf(ev) !== -1; });
+      document.querySelectorAll('[data-venue="' + venueKey + '"]').forEach(function(el){
+        el.style.display = relevant ? '' : 'none';
+      });
+    });
   }
 
   function filterProgrammeForGuest(events){
@@ -982,6 +1041,7 @@
       });
       group.style.display = anyVisible ? '' : 'none';
     });
+    filterVenuesForGuest(events);
   }
 
   function applyGuest(guest){
@@ -1012,15 +1072,12 @@
     gateSuggestionsEl.style.display = 'block';
     Array.from(gateSuggestionsEl.children).forEach(function(el, i){
       el.addEventListener('click', function(){
-        var guest = matches[i];
-        saveGuest(guest);
-        applyGuest(guest);
+        applyGuest(matches[i]);
       });
     });
   });
 
   resetGuestBtn.addEventListener('click', function(){
-    clearGuest();
     resetGuestBtn.style.display = 'none';
     resultEl.innerHTML = '';
     showGate();
@@ -1032,12 +1089,7 @@
     }
   });
 
-  var savedGuest = loadGuest();
-  if (savedGuest) {
-    applyGuest(savedGuest);
-  } else {
-    showGate();
-  }
+  showGate();
 
 })();
 </script>
