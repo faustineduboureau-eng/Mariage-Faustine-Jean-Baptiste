@@ -794,9 +794,6 @@
   <div class="panel" id="panel-rsvp">
     <section class="block">
       <h2>Confirmer votre présence</h2>
-      <div class="preview-banner" id="preview-banner">
-        La liste des invités est en cours de finalisation — si les informations ci-dessous vous semblent incorrectes, contactez directement les mariés.
-      </div>
       <div id="guest-result"></div>
     </section>
   </div>
@@ -916,7 +913,7 @@
 
   var PROGRAMME = [
     { day: "Samedi 31 juillet", icon: "piment", items: [
-      { time: "15h00", title: "Cérémonie religieuse", venue: "chapelle", event: "eglise" },
+      { time: "15h00", title: "Messe de mariage", venue: "chapelle", event: "eglise" },
       { time: "18h00", title: "Cocktail", venue: "mamie", event: "cocktail" },
       { time: "20h30", title: "Dîner", venue: "mamie", event: "diner" }
     ]},
@@ -971,155 +968,160 @@
 
   // ---------- RSVP data ----------
   var EVENT_LABELS = {
-    eglise: "Cérémonie religieuse — samedi 31 juillet, 15h00",
+    eglise: "Messe de mariage — samedi 31 juillet, 15h00",
     cocktail: "Cocktail — samedi 31 juillet, 18h00",
     diner: "Dîner &amp; soirée — samedi 31 juillet, 20h30",
     brunch: "Brunch — dimanche 1er août, 12h30",
     rebond: "Rebond — dimanche 1er août, 19h30"
   };
   var GUESTS = [
-    { name: 'Jean-Baptiste Abily', plusOne: 'Faustine Duboureau', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Olivier Abily', plusOne: 'Anne-Christine Abily', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Augustin Abily', plusOne: 'Georgia Cole', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Louis Abily', plusOne: 'Raphaelle Barcelo', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Yves Abily', plusOne: 'Laurence Abily', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Herve Caroff', plusOne: 'Gwen Caroff', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Vianney Caroff', plusOne: 'Morgane Kersimon', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Raphaelle Caroff', plusOne: 'Nance Renard', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Jurgen Stritt', plusOne: 'Francoise-Marie Stritt', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Perrine Stritt', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Vincent Le Guennou', plusOne: 'Aurelie Pujol - Le Guennou', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Naomi Djiena Wembou', plusOne: 'Lionel Djiena Wembou', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Erwan Le Guennou', plusOne: 'Carol-Ann Le Guennou', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Maeva Le Guennou', plusOne: 'Martin Leservoisier', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Jean Kerros', plusOne: 'Annick Kerros', events: ['eglise', 'cocktail'] },
-    { name: 'Benoit Kerros', plusOne: 'Sabine Kerros', events: ['eglise', 'cocktail'] },
-    { name: 'Arnaud Salvi', plusOne: 'Céline Salvi', events: ['eglise', 'cocktail'] },
-    { name: 'Helene Long', plusOne: 'Stephane Long', events: ['eglise', 'cocktail'] },
-    { name: 'Ludovic Crunelle', plusOne: 'Regine Crunelle', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Margaux Denzer', plusOne: 'Gauthier Denzer', events: ['eglise', 'cocktail'] },
-    { name: 'Patrice Betge', plusOne: 'Beatrice Betge', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Yves-Marie Le Cerf', plusOne: 'Véronique Le Cerf', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Christophe Le Rohellec', plusOne: 'Françoise Le Rohellec', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Benoît Nivert', plusOne: 'Christine Nivert', events: ['eglise', 'cocktail'] },
-    { name: 'Antoine Sina', plusOne: 'Angela Sina', events: ['eglise', 'cocktail'] },
-    { name: 'Jean-Claude Carrere', plusOne: null, events: ['eglise', 'cocktail'] },
-    { name: 'Alexandre Le Bruchec', plusOne: 'Garance Hourcade', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Othmane Sabir', plusOne: 'Lucie Frechin', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Youssef Chadali', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Valentin Arfi', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Jules Arnaud', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Baudouin Bonnet', plusOne: 'Jeanne Bonnet', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Antoine Dlb', plusOne: 'Marie Dlb', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Hugo Lopez', plusOne: 'Lea Le Bescou', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Lucas Sagard', plusOne: 'Camille Da Silva', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Wassim Androussi', plusOne: 'Ninon Duyck', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Tom Orazi', plusOne: 'Chloe Maire', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Louis Labat', plusOne: 'Gersende Labat', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Matthieu De Butler', plusOne: 'Armelle De Butler', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Hugo Aventin', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Adrien Casa', plusOne: 'Camille Casa', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Rouslan Tysch', plusOne: 'Earine Tysch', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Alan Holdsworth', plusOne: 'Gladys Holdsworth', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Igor Hemery', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Pierre-Louis Robert', plusOne: 'Clara Laporte', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Erwan-Mari Raoul', plusOne: 'Marion Raoul', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Alexandre Guegan', plusOne: 'Julie Guegan', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Andreas Reding', plusOne: 'Alexandra Reding', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Gregoire Delcourt', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Olivier Duboureau', plusOne: 'Marie-Laure Duboureau Blezat', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Patrick Armengau', plusOne: 'Marie Christine Armengau', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Alain Dartiguenave', plusOne: 'Annick Dartiguenave', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Christophe Delafontaine', plusOne: 'Anne Delafontaine', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Thierry Delaye', plusOne: 'Catherine Delaye', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Frédéric Reux', plusOne: 'Sandrine Chamousset Reux', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Hortense Dartiguenave', plusOne: 'Louis Dartiguenave', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Perrine Hachem', plusOne: 'Ali Hachem', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Hugues Vincent-Genod', plusOne: 'Megha Vincent-Genod', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Pierre Blezat', plusOne: 'Yves Rocha Binet', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Georges Blezat', plusOne: 'Catherine Blezat', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Isabelle Cau', plusOne: 'Alain Combier', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Clement Combier', plusOne: 'Chloe Combier', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Alice Combier', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Victor Desnoyer', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Catherine Rey', plusOne: 'Patrick Rey', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Pauline Provence', plusOne: 'Julien Provence', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Charlotte Rey', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Jacques Duboureau', plusOne: 'Nicole Duboureau', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Dorothee Escudier', plusOne: 'Laurent Escudier', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Mathilde Duboureau', plusOne: 'Paul-Vincent Gregot', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Julie Nogues', plusOne: 'Simon Nogues', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Adrien Mouronval', plusOne: 'Linda Piras', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Jade Ameline', plusOne: 'Teo Hansjacob', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Andrea Haddad', plusOne: 'Florient Longueville', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Aurelie Jay', plusOne: 'Henry Walsh', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Julie Chavet', plusOne: 'Lucas Hdf', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Lisa Quarello', plusOne: 'Victor Espuna', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Margaux Gianoli', plusOne: 'Eloi Bernoud', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Ludivine Parent', plusOne: 'Cesar Parent', events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Louise Delannoy', plusOne: 'Simon Delannoy', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Yassine Jenanne', plusOne: 'Fadoua Jenanne', events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Antoine Abily', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Annick Abily', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Armelle Rolland', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Marjorie Abily', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Alexandre Abily', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Axelle Abily', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Marion Caroff', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Eliott Le Part', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Marin Stritt', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Côme Stritt', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Xavier Rolland', plusOne: null, events: ['eglise', 'cocktail'] },
-    { name: 'Louise Le Guennou', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Victor Kerros', plusOne: null, events: ['eglise', 'cocktail'] },
-    { name: 'Lisa Kerros', plusOne: null, events: ['eglise', 'cocktail'] },
-    { name: 'Elorn Kerros', plusOne: null, events: ['eglise', 'cocktail'] },
-    { name: 'Leonie Kerros', plusOne: null, events: ['eglise', 'cocktail'] },
-    { name: 'Brigitte Penfrat', plusOne: null, events: ['eglise', 'cocktail'] },
-    { name: 'Jacqueline Le Guennou', plusOne: null, events: ['eglise', 'cocktail'] },
-    { name: 'Maurice Le Guennou', plusOne: null, events: ['eglise', 'cocktail'] },
-    { name: 'Jean-Paul Le Guennou', plusOne: null, events: ['eglise', 'cocktail'] },
-    { name: 'Jean (pere) Marc', plusOne: null, events: ['eglise', 'cocktail'] },
-    { name: 'Clara Hdf', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Antoine Reuling', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Maxime Samain', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Quentin Tolo', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Adrian Bichat', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Edouard Le Bigot', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Fatou Cisse', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Maxime Glize', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Louis Le Bouteille', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Kiran Beckett', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'James Myburgh', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Louis Hugot', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Ignacio Deprit', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Jaime Fuster', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Nicolas Nguyen', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Micka Sadoun', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Sébastien (père) De Groulard', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Lucie Vincent-Genod', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Emma Combier', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Jacqueline Cau', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Marie-Jose Desnoyer', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Emilie Desnoyer', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Melanie Desnoyer', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Nicolas Rey', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Benjamin Duboureau', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'France Duboureau', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Chloe Mouronval', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Louise Mouronval', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Raphaelle Thervet', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Antoine Dauphin', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Koupaia Gueguen', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Armand Rouch', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Emma Casamian', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
-    { name: 'Elise Aouizerate', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Raphael Hamon', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Victoria Bernard', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Lauralyn Dhaine', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Maelys Lenshener', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Antoine Colle', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
-    { name: 'Amelie Cazalet', plusOne: null, events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Jean-Baptiste Abily', 'Faustine Duboureau'], formNames: ['Jean-Baptiste ABILY', 'Faustine DUBOUREAU'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Olivier Abily', 'Anne-Christine Abily'], formNames: ['Olivier ABILY', 'Anne-Christine ABILY'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Augustin Abily', 'Georgia Cole'], formNames: ['Augustin ABILY', 'Georgia COLE'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Antoine Abily'], formNames: ['Antoine ABILY'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Louis Abily', 'Raphaelle Barcelo'], formNames: ['Louis ABILY', 'Raphaelle BARCELO'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Annick Abily'], formNames: ['Annick ABILY'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Armelle Rolland'], formNames: ['Armelle ROLLAND'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Yves Abily', 'Laurence Abily'], formNames: ['Yves ABILY', 'Laurence ABILY'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Marjorie Abily'], formNames: ['Marjorie ABILY'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Alexandre Abily'], formNames: ['Alexandre ABILY'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Axelle Abily'], formNames: ['Axelle ABILY'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Herve Caroff', 'Gwen Caroff'], formNames: ['Herve CAROFF', 'Gwen CAROFF'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Marion Caroff', 'Eliott Le Part'], formNames: ['Marion CAROFF', 'Eliott LE PART'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Vianney Caroff', 'Morgane Kersimon'], formNames: ['Vianney CAROFF', 'Morgane KERSIMON'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Raphaelle Caroff', 'Nance Renard'], formNames: ['Raphaelle CAROFF', 'Nance RENARD'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Jurgen Stritt', 'Francoise-Marie Stritt'], formNames: ['Jurgen STRITT', 'Francoise-Marie STRITT'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Marin Stritt'], formNames: ['Marin STRITT'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Perrine Stritt', 'Etienne'], formNames: ['Perrine STRITT', 'Etienne'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Côme Stritt'], formNames: ['Côme STRITT'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Xavier Rolland'], formNames: ['Xavier ROLLAND'], events: ['eglise', 'cocktail'] },
+    { people: ['Vincent Le Guennou', 'Aurelie Pujol - Le Guennou', 'Louise Le Guennou'], formNames: ['Vincent LE GUENNOU', 'Aurelie PUJOL - LE GUENNOU', 'Louise LE GUENNOU'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Naomi Djiena Wembou', 'Lionel Djiena Wembou'], formNames: ['Naomi DJIENA WEMBOU', 'Lionel DJIENA WEMBOU'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Erwan Le Guennou', 'Carol-Ann Le Guennou'], formNames: ['Erwan LE GUENNOU', 'Carol-Ann LE GUENNOU'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Maeva Le Guennou', 'Martin Leservoisier'], formNames: ['Maeva LE GUENNOU', 'Martin LESERVOISIER'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Jean Kerros', 'Annick Kerros'], formNames: ['Jean KERROS', 'Annick KERROS'], events: ['eglise', 'cocktail'] },
+    { people: ['Benoit Kerros', 'Sabine Kerros', 'Elorn Kerros', 'Leonie Kerros'], formNames: ['Benoit KERROS', 'Sabine KERROS', 'Elorn KERROS', 'Leonie KERROS'], events: ['eglise', 'cocktail'] },
+    { people: ['Victor Kerros', 'Lisa Kerros'], formNames: ['Victor KERROS', 'Lisa KERROS'], events: ['eglise', 'cocktail'] },
+    { people: ['Arnaud Salvi', 'Céline Salvi'], formNames: ['Arnaud SALVI', 'Céline SALVI'], events: ['eglise', 'cocktail'] },
+    { people: ['Helene Long', 'Stephane Long'], formNames: ['Helene LONG', 'Stephane LONG'], events: ['eglise', 'cocktail'] },
+    { people: ['Ludovic Crunelle', 'Regine Crunelle'], formNames: ['Ludovic CRUNELLE', 'Regine CRUNELLE'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Margaux Denzer', 'Gauthier Denzer'], formNames: ['Margaux DENZER', 'Gauthier DENZER'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Patrice Betge', 'Beatrice Betge'], formNames: ['Patrice BETGE', 'Beatrice BETGE'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Yves-Marie Le Cerf', 'Véronique Le Cerf'], formNames: ['Yves-Marie LE CERF', 'Véronique LE CERF'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Brigitte Penfrat'], formNames: ['Brigitte PENFRAT'], events: ['eglise', 'cocktail'] },
+    { people: ['Christophe Le Rohellec', 'Françoise Le Rohellec'], formNames: ['Christophe LE ROHELLEC', 'Françoise LE ROHELLEC'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Benoît Nivert', 'Christine Nivert'], formNames: ['Benoît NIVERT', 'Christine NIVERT'], events: ['eglise', 'cocktail'] },
+    { people: ['Antoine Sina', 'Angela Sina'], formNames: ['Antoine SINA', 'Angela SINA'], events: ['eglise', 'cocktail'] },
+    { people: ['Jacqueline Le Guennou'], formNames: ['Jacqueline LE GUENNOU'], events: ['eglise', 'cocktail'] },
+    { people: ['Maurice Le Guennou'], formNames: ['Maurice LE GUENNOU'], events: ['eglise', 'cocktail'] },
+    { people: ['Jean-Paul Le Guennou', 'Rose-Marie Le Guennou'], formNames: ['Jean-Paul LE GUENNOU', 'Rose-Marie LE GUENNOU'], events: ['eglise', 'cocktail'] },
+    { people: ['Marie-Victoire Genest', 'Paul Genest'], formNames: ['Marie-Victoire GENEST', 'Paul GENEST'], events: ['eglise', 'cocktail'] },
+    { people: ['Jean Marc'], formNames: ['Jean MARC'], events: ['eglise', 'cocktail'] },
+    { people: ['Jean-Claude Carrere', 'Yvonne Carrere'], formNames: ['Jean-Claude CARRERE', 'Yvonne CARRERE'], events: ['eglise', 'cocktail'] },
+    { people: ['Alexandre Le Bruchec', 'Garance Hourcade'], formNames: ['Alexandre LE BRUCHEC', 'Garance HOURCADE'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Othmane Sabir'], formNames: ['Othmane SABIR'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Youssef Chadali'], formNames: ['Youssef CHADALI'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Valentin Arfi', 'Mira Segesser'], formNames: ['Valentin ARFI', 'Mira SEGESSER'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Jules Arnaud', 'Julie Faure-Vincent'], formNames: ['Jules ARNAUD', 'Julie FAURE-VINCENT'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Baudouin Bonnet', 'Jeanne Bonnet'], formNames: ['Baudouin BONNET', 'Jeanne BONNET'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Antoine De La Brosse', 'Marie De La Brosse'], formNames: ['Antoine DE LA BROSSE', 'Marie DE LA BROSSE'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Clara Hubert De Fraisse'], formNames: ['Clara HUBERT DE FRAISSE'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Hugo Lopez', 'Lea Le Bescou'], formNames: ['Hugo LOPEZ', 'Lea LE BESCOU'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Antoine Reuling'], formNames: ['Antoine REULING'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Lucas Sagard', 'Camille Da Silva'], formNames: ['Lucas SAGARD', 'Camille DA SILVA'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Maxime Samain'], formNames: ['Maxime SAMAIN'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Quentin Tolo'], formNames: ['Quentin TOLO'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Adrian Bichat'], formNames: ['Adrian BICHAT'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Edouard Le Bigot'], formNames: ['Edouard LE BIGOT'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Wassim Androussi', 'Ninon Duyck'], formNames: ['Wassim ANDROUSSI', 'Ninon DUYCK'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Fatou Cisse'], formNames: ['Fatou CISSE'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Tom Orazi', 'Chloe Maire'], formNames: ['Tom ORAZI', 'Chloe MAIRE'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Louis Labat', 'Gersende Labat'], formNames: ['Louis LABAT', 'Gersende LABAT'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Matthieu De Butler', 'Armelle De Butler'], formNames: ['Matthieu DE BUTLER', 'Armelle DE BUTLER'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Hugo Aventin', 'Maia Marzuoli'], formNames: ['Hugo AVENTIN', 'Maia MARZUOLI'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Adrien Casa', 'Camille Casa'], formNames: ['Adrien CASA', 'Camille CASA'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Rouslan Tysch', 'Earine Tysch'], formNames: ['Rouslan TYSCH', 'Earine TYSCH'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Alan Holdsworth', 'Gladys Holdsworth'], formNames: ['Alan HOLDSWORTH', 'Gladys HOLDSWORTH'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Igor Hemery', 'Agathe Delabarre'], formNames: ['Igor HEMERY', 'Agathe DELABARRE'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Maxime Glize'], formNames: ['Maxime GLIZE'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Pierre-Louis Robert', 'Clara Laporte'], formNames: ['Pierre-Louis ROBERT', 'Clara LAPORTE'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Louis Le Bouteille'], formNames: ['Louis LE BOUTEILLE'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Erwan-Mari Raoul', 'Marion Raoul'], formNames: ['Erwan-Mari RAOUL', 'Marion RAOUL'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Alexandre Guegan', 'Julie Guegan'], formNames: ['Alexandre GUEGAN', 'Julie GUEGAN'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Andreas Reding', 'Alexandra Reding'], formNames: ['Andreas REDING', 'Alexandra REDING'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Kiran Beckett'], formNames: ['Kiran BECKETT'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['James Myburgh'], formNames: ['James MYBURGH'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Louis Hugot'], formNames: ['Louis HUGOT'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Ignacio Deprit'], formNames: ['Ignacio DEPRIT'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Jaime Fuster'], formNames: ['Jaime FUSTER'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Nicolas Nguyen'], formNames: ['Nicolas NGUYEN'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Martin Rouault'], formNames: ['Martin ROUAULT'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Victor Guermonprez'], formNames: ['Victor GUERMONPREZ'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Gregoire Delcourt', 'Anna Gostevcic'], formNames: ['Gregoire DELCOURT', 'Anna GOSTEVCIC'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Micka Sadoun'], formNames: ['Micka SADOUN'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Sébastien De Groulard'], formNames: ['Sébastien DE GROULARD'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Olivier Duboureau', 'Marie-Laure Duboureau Blezat'], formNames: ['Olivier DUBOUREAU', 'Marie-Laure DUBOUREAU BLEZAT'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Patrick Armengau', 'Marie Christine Armengau'], formNames: ['Patrick ARMENGAU', 'Marie Christine ARMENGAU'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Alain Dartiguenave', 'Annick Dartiguenave'], formNames: ['Alain DARTIGUENAVE', 'Annick DARTIGUENAVE'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Christophe Delafontaine', 'Anne Delafontaine'], formNames: ['Christophe DELAFONTAINE', 'Anne DELAFONTAINE'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Thierry Delaye', 'Catherine Delaye'], formNames: ['Thierry DELAYE', 'Catherine DELAYE'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Frédéric Reux', 'Sandrine Chamousset Reux'], formNames: ['Frédéric REUX', 'Sandrine CHAMOUSSET REUX'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Ritu Sud', 'Anil Sud'], formNames: ['Ritu SUD', 'Anil SUD'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Hortense Dartiguenave', 'Louis Dartiguenave'], formNames: ['Hortense DARTIGUENAVE', 'Louis DARTIGUENAVE'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Lucie Vincent-Genod'], formNames: ['Lucie VINCENT-GENOD'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Perrine Hachem', 'Ali Hachem'], formNames: ['Perrine HACHEM', 'Ali HACHEM'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Hugues Vincent-Genod', 'Megha Vincent-Genod'], formNames: ['Hugues VINCENT-GENOD', 'Megha VINCENT-GENOD'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Pierre Blezat', 'Yves Rocha Binet'], formNames: ['Pierre BLEZAT', 'Yves ROCHA BINET'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Georges Blezat', 'Catherine Blezat'], formNames: ['Georges BLEZAT', 'Catherine BLEZAT'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Isabelle Cau-Combier', 'Alain Combier'], formNames: ['Isabelle CAU-COMBIER', 'Alain COMBIER'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Françoise Latour'], formNames: ['Françoise LATOUR'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Véronique Toulas'], formNames: ['Véronique TOULAS'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Maryline Moire'], formNames: ['Maryline MOIRE'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Laurent Puyelo', 'Valérie Puyelo'], formNames: ['Laurent PUYELO', 'Valérie PUYELO'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Anne Gry', 'Patrice Gry'], formNames: ['Anne GRY', 'Patrice GRY'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Vincent Espagno', 'Magali Espagno'], formNames: ['Vincent ESPAGNO', 'Magali ESPAGNO'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Clement Combier', 'Chloe Combier'], formNames: ['Clement COMBIER', 'Chloe COMBIER'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Alice Combier', 'Clement Frouin'], formNames: ['Alice COMBIER', 'Clement FROUIN'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Emma Combier'], formNames: ['Emma COMBIER'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Jacqueline Cau'], formNames: ['Jacqueline CAU'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Marie-Jose Desnoyer'], formNames: ['Marie-Jose DESNOYER'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Emilie Desnoyer'], formNames: ['Emilie DESNOYER'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Melanie Desnoyer'], formNames: ['Melanie DESNOYER'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Victor Desnoyer', 'Delphine Capron'], formNames: ['Victor DESNOYER', 'Delphine CAPRON'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Catherine Rey', 'Patrick Rey'], formNames: ['Catherine REY', 'Patrick REY'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Pauline Provence', 'Julien Provence'], formNames: ['Pauline PROVENCE', 'Julien PROVENCE'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Charlotte Rey', 'Fabien Ducrocq'], formNames: ['Charlotte REY', 'Fabien DUCROCQ'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Nicolas Rey'], formNames: ['Nicolas REY'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Jacques Duboureau', 'Nicole Duboureau'], formNames: ['Jacques DUBOUREAU', 'Nicole DUBOUREAU'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Dorothee Escudier', 'Laurent Escudier'], formNames: ['Dorothee ESCUDIER', 'Laurent ESCUDIER'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Mathilde Duboureau', 'Paul-vincent Gregot'], formNames: ['Mathilde DUBOUREAU', 'Paul-vincent GREGOT'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Benjamin Duboureau'], formNames: ['Benjamin DUBOUREAU'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['France Duboureau'], formNames: ['France DUBOUREAU'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Julie Nogues', 'Simon Nogues'], formNames: ['Julie NOGUES', 'Simon NOGUES'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Chloe Mouronval'], formNames: ['Chloe MOURONVAL'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Adrien Mouronval', 'Linda Piras'], formNames: ['Adrien MOURONVAL', 'Linda PIRAS'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Louise Mouronval'], formNames: ['Louise MOURONVAL'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Jade Ameline', 'Teo Hansjacob'], formNames: ['Jade AMELINE', 'Teo HANSJACOB'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Raphaelle Thervet'], formNames: ['Raphaelle THERVET'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Antoine Dauphin'], formNames: ['Antoine DAUPHIN'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Koupaia Gueguen'], formNames: ['Koupaia GUEGUEN'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Andrea Haddad', 'Florient Longueville'], formNames: ['Andrea HADDAD', 'Florient LONGUEVILLE'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Armand Rouch'], formNames: ['Armand ROUCH'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Aurelie Jay', 'Henry Walsh'], formNames: ['Aurelie JAY', 'Henry WALSH'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Julie Chavet', 'Lucas Hubert De Fraisse'], formNames: ['Julie CHAVET', 'Lucas HUBERT DE FRAISSE'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Emma Casamian'], formNames: ['Emma CASAMIAN'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Lisa Quarello', 'Victor Espuna'], formNames: ['Lisa QUARELLO', 'Victor ESPUNA'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Margaux Gianoli', 'Eloi Bernoud'], formNames: ['Margaux GIANOLI', 'Eloi BERNOUD'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Elise Aouizerate'], formNames: ['Elise AOUIZERATE'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Raphael Hamon'], formNames: ['Raphael HAMON'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Ludivine Parent', 'Cesar Parent'], formNames: ['Ludivine PARENT', 'Cesar PARENT'], events: ['eglise', 'cocktail', 'diner', 'brunch', 'rebond'] },
+    { people: ['Louise Delannoy', 'Simon Delannoy'], formNames: ['Louise DELANNOY', 'Simon DELANNOY'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Yassine Jenanne', 'Fadoua Jenanne'], formNames: ['Yassine JENANNE', 'Fadoua JENANNE'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Victoria Bernard'], formNames: ['Victoria BERNARD'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Lauralyn Dhaine'], formNames: ['Lauralyn DHAINE'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Maelys Lenshener'], formNames: ['Maelys LENSHENER'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Antoine Colle'], formNames: ['Antoine COLLE'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
+    { people: ['Amelie Cazalet'], formNames: ['Amelie CAZALET'], events: ['eglise', 'cocktail', 'diner', 'brunch'] },
   ];
 
   function normalize(s){
@@ -1130,27 +1132,34 @@
     q = normalize(q);
     if (!q) return [];
     return GUESTS.filter(function(g){
-      return normalize(g.name).indexOf(q) !== -1 ||
-             (g.plusOne && normalize(g.plusOne).indexOf(q) !== -1);
+      return g.people.some(function(p){ return normalize(p).indexOf(q) !== -1; });
     });
   }
 
   function displayName(guest){
-    return guest.plusOne ? guest.name + ' &amp; ' + guest.plusOne : guest.name;
+    return guest.people.join(' &amp; ');
   }
 
   // ---------- RSVP panel ----------
   var resultEl = document.getElementById('guest-result');
 
   // ---------- RSVP form auto-link ----------
-  var RSVP_FORM_BASE = 'https://docs.google.com/forms/d/e/1FAIpQLSdaoLuObmauEPUvgiSvZXGnLNXe5wC3LTUkfkM0iVy84vTUSg/viewform?usp=pp_url';
   var RSVP_NAME_ENTRY = 'entry.369460566';
-  var RSVP_FORMULE_ENTRY = 'entry.1776449930';
   var EVENT_LABEL_FR = { eglise: 'Cérémonie', cocktail: 'Cocktail', diner: 'Dîner & Soirée', brunch: 'Brunch', rebond: 'Rebond' };
+  // Un formulaire Google par formule : chacun ne propose que les événements concernés.
   var RSVP_PROFILES = [
-    { events: ['eglise','cocktail'], formule: 'Cérémonie & Cocktail', checkboxEntry: 'entry.593636543' },
-    { events: ['eglise','cocktail','diner','brunch'], formule: 'Cérémonie, Cocktail & Dîner, Brunch', checkboxEntry: 'entry.1090707054' },
-    { events: ['eglise','cocktail','diner','brunch','rebond'], formule: 'Cérémonie, Cocktail & Dîner, Brunch et Rebond', checkboxEntry: 'entry.1422989312' }
+    { events: ['eglise','cocktail'],
+      formBase: 'https://docs.google.com/forms/d/e/1FAIpQLSdaoLuObmauEPUvgiSvZXGnLNXe5wC3LTUkfkM0iVy84vTUSg/viewform?usp=pp_url',
+      checkboxEntry: 'entry.593636543',
+      presenceEntry: 'entry.508874300' },
+    { events: ['eglise','cocktail','diner','brunch'],
+      formBase: 'https://docs.google.com/forms/d/e/1FAIpQLSfQjTk7dl0XXI3C6S8tYG_FJgRkaWkTkw2IDyjengeOf8tuEw/viewform?usp=pp_url',
+      checkboxEntry: 'entry.1090707054',
+      presenceEntry: 'entry.385411306' },
+    { events: ['eglise','cocktail','diner','brunch','rebond'],
+      formBase: 'https://docs.google.com/forms/d/e/1FAIpQLSegn_tLpge05rtMmVuvpXRccWWlU07MSRqr6krZ5VXQGXBWSw/viewform?usp=pp_url',
+      checkboxEntry: 'entry.1422989312',
+      presenceEntry: 'entry.1642711872' }
   ];
 
   function matchRsvpProfile(events){
@@ -1167,19 +1176,15 @@
     var profile = matchRsvpProfile(guest.events);
     if (!profile) return null;
     var params = [];
-    params.push(RSVP_NAME_ENTRY + '=' + encodeURIComponent(guest.name));
-    params.push(RSVP_NAME_ENTRY + '=' + encodeURIComponent(guest.plusOne ? guest.plusOne : 'Pas d\'accompagnant'));
-    params.push(RSVP_FORMULE_ENTRY + '=' + encodeURIComponent(profile.formule));
-    guest.events.forEach(function(ev){
-      if (EVENT_LABEL_FR[ev]) params.push(profile.checkboxEntry + '=' + encodeURIComponent(EVENT_LABEL_FR[ev]));
-    });
-    return RSVP_FORM_BASE + '&' + params.join('&');
+    params.push(RSVP_NAME_ENTRY + '=' + encodeURIComponent(guest.formNames.join(' & ')));
+    if (profile.presenceEntry) params.push(profile.presenceEntry + '=' + encodeURIComponent('Nous serons tous présents'));
+    return profile.formBase + '&' + params.join('&');
   }
 
   function renderGuest(guest){
     var html = '<div class="guest-result">';
     html += '<h3>' + displayName(guest) + '</h3>';
-    if (!guest.plusOne) html += '<div class="plusone">Sans accompagnant</div>';
+    if (guest.people.length === 1) html += '<div class="plusone">Sans accompagnant</div>';
     html += '<ul class="event-list">';
     guest.events.forEach(function(ev){
       html += '<li><span class="dot"></span>' + EVENT_LABELS[ev] + '</li>';
@@ -1189,7 +1194,7 @@
     if (rsvpLink) {
       html += '<a href="' + rsvpLink + '" target="_blank" rel="noopener" class="btn">Confirmer ma présence</a>';
     } else {
-      html += '<a href="' + RSVP_FORM_BASE + '" target="_blank" rel="noopener" class="btn">Confirmer ma présence</a>';
+      html += '<p>Un souci avec votre invitation ? Contactez directement les mariés.</p>';
     }
     html += '</div>';
     resultEl.innerHTML = html;
