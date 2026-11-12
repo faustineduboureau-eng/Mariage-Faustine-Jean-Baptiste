@@ -1281,15 +1281,18 @@
     { events: ['eglise','cocktail'],
       formBase: 'https://docs.google.com/forms/d/e/1FAIpQLSdaoLuObmauEPUvgiSvZXGnLNXe5wC3LTUkfkM0iVy84vTUSg/viewform?usp=pp_url',
       checkboxEntry: 'entry.593636543',
-      presenceEntry: 'entry.508874300' },
+      presenceEntry: 'entry.508874300',
+      formBaseEn: 'https://docs.google.com/forms/d/e/1FAIpQLSe12liucMZ5d0c-p1fT8Xj2GhNYDraAC2bC0BQQeCosGtmsUw/viewform?usp=pp_url' },
     { events: ['eglise','cocktail','diner','brunch'],
       formBase: 'https://docs.google.com/forms/d/e/1FAIpQLSfQjTk7dl0XXI3C6S8tYG_FJgRkaWkTkw2IDyjengeOf8tuEw/viewform?usp=pp_url',
       checkboxEntry: 'entry.1090707054',
-      presenceEntry: 'entry.385411306' },
+      presenceEntry: 'entry.385411306',
+      formBaseEn: 'https://docs.google.com/forms/d/e/1FAIpQLSfUib3XC2vanrDHKdjQy_6fLRRQZSl_QI981yQ_WIYZnkTBTw/viewform?usp=pp_url' },
     { events: ['eglise','cocktail','diner','brunch','rebond'],
       formBase: 'https://docs.google.com/forms/d/e/1FAIpQLSegn_tLpge05rtMmVuvpXRccWWlU07MSRqr6krZ5VXQGXBWSw/viewform?usp=pp_url',
       checkboxEntry: 'entry.1422989312',
-      presenceEntry: 'entry.1642711872' }
+      presenceEntry: 'entry.1642711872',
+      formBaseEn: 'https://docs.google.com/forms/d/e/1FAIpQLSea0nbQxp--VpPqdo9tqpTCPCcWwwttb5a7TV4ajdEZ_62FHg/viewform?usp=pp_url' }
   ];
 
   function matchRsvpProfile(events){
@@ -1307,8 +1310,8 @@
     if (!profile) return null;
     var params = [];
     params.push(RSVP_NAME_ENTRY + '=' + encodeURIComponent(guest.formNames.join(' & ')));
-    if (profile.presenceEntry) params.push(profile.presenceEntry + '=' + encodeURIComponent('Nous serons tous présents'));
-    return profile.formBase + '&' + params.join('&');
+    if (profile.presenceEntry) params.push(profile.presenceEntry + '=' + encodeURIComponent(LANG === 'en' ? 'We will all be there' : 'Nous serons tous présents'));
+    return ((LANG === 'en' && profile.formBaseEn) ? profile.formBaseEn : profile.formBase) + '&' + params.join('&');
   }
 
   function renderGuest(guest){
